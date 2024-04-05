@@ -24,6 +24,7 @@ blockquote,
 dl,
 dd {
   margin-block-end: 0;
+  overscroll-behavior-y: none;
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
@@ -36,6 +37,7 @@ ol[role="list"] {
 body {
   min-height: 100vh;
   line-height: 1.5;
+  font-family: "Space Mono, SF Mono, Fira Code, Fira Mono, Roboto Mono, monospace";
 }
 
 /* Set shorter line heights on headings and interactive elements */
@@ -87,4 +89,15 @@ textarea:not([rows]) {
 /* Anything that has been anchored to should have extra scroll margin */
 :target {
   scroll-margin-block: 5ex;
+}
+
+.container {
+  max-width: 1536px;
+  margin: auto;
+  padding-left: 50px;
+  padding-right: 50px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }

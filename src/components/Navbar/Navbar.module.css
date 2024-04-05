@@ -1,0 +1,21 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+}
+.navLinks {
+  display: flex;
+  list-style-type: none;
+}
+.navLinks li {
+  text-align: center;
+  padding: 10px;
+}
+.navLinks li a {
+  text-decoration: none;
+}
+.navLinks li a:hover {
+  border-bottom: 2px solid black;
+  transition: all 0.2s ease-out;
+}
