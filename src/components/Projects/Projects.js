@@ -5,7 +5,7 @@ const Projects = () => {
   return (
     <div id="projects" className={styles.container}>
       <div className={styles.sectionHeading}>
-        <h2>Some Projects I’ve Built</h2>
+        <h2>Some Projects I&apos;ve Built</h2>
         <hr className={styles.divider} />
       </div>
       <div className={styles.projectsContent}>
