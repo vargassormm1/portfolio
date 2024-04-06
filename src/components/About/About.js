@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const About = () => {
   return (
-    <div className={styles.container}>
+    <div id="about" className={styles.container}>
       <div className={styles.sectionHeading}>
         <h2>About Me</h2>
         <hr className={styles.divider} />

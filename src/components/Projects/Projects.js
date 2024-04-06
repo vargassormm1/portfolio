@@ -3,7 +3,7 @@ import projects from "@/config/projects";
 import ProjectCard from "./ProjectCard/ProjectCard";
 const Projects = () => {
   return (
-    <div className={styles.container}>
+    <div id="projects" className={styles.container}>
       <div className={styles.sectionHeading}>
         <h2>Some Projects I’ve Built</h2>
         <hr className={styles.divider} />

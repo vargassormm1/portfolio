@@ -3,19 +3,29 @@ import styles from "./Navbar.module.css";
 const Navbar = () => {
   return (
     <div className={styles.navbar}>
-      <h1>Ralph</h1>
+      <h1>
+        <a data-scroll href="/">
+          Ralph
+        </a>
+      </h1>
       <ul className={styles.navLinks}>
         <li>
           <a href="">Home</a>
         </li>
         <li>
-          <a href="">About</a>
+          <a data-scroll href="/#about">
+            About
+          </a>
         </li>
         <li>
-          <a href="">Projects</a>
+          <a data-scroll href="/#projects">
+            Projects
+          </a>
         </li>
         <li>
-          <a href="">Contact</a>
+          <a data-scroll href="/#contact">
+            Contact
+          </a>
         </li>
       </ul>
     </div>
