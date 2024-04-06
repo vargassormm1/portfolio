@@ -8,7 +8,7 @@ module.exports = [
   },
   {
     image: "/baseline.jpeg",
-    title: "GSAP Slider Component",
+    title: "Baseline",
     external: "https://base-line.vercel.app/",
     github: "https://github.com/vargassormm1/BaseLine",
     desc: "Web application to show modern slider, the slider images are managament from Strapi CMS Panel",

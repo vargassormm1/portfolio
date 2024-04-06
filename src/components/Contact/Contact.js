@@ -15,7 +15,7 @@ const Contact = () => {
           question, or just wish to say hello, feel free to reach out. I&apos;ll
           make sure to get back to you!
         </p>
-        <a href="" className={styles.contact}>
+        <a href={`mailto:ralphvargassorm@gmail.com`} className={styles.contact}>
           Say Hello
         </a>
       </div>

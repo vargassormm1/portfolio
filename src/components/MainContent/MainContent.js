@@ -14,7 +14,10 @@ const MainContent = () => {
           responsive websites and web apps.
         </p>
         <div className={styles.links}>
-          <a href="" className={styles.contact}>
+          <a
+            href={`mailto:ralphvargassorm@gmail.com`}
+            className={styles.contact}
+          >
             Let&apos;s Talk
           </a>
           <a href="" className={styles.icon}>
