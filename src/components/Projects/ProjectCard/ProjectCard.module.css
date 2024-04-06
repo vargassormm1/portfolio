@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 25px;
+  border-radius: 10px;
+}
+.projectHeader {
+  height: 100%;
+}
+.projectImage {
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+}
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.projectLinks {
+  margin-top: 10px;
+}
+.projectLinks a {
+  text-decoration: none;
+  margin: 2px;
+  border: 1px solid black;
+  padding: 5px;
+}
