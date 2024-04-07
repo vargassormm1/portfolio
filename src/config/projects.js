@@ -15,7 +15,7 @@ module.exports = [
   },
   {
     image: "/simon.jpeg",
-    title: "PWA Instagram for Pets",
+    title: "Simon Game",
     external: "https://friendly-bassi-500e78.netlify.app/",
     github: "https://github.com/vargassormm1/SimonGame",
     desc: "This application was created created using HTML/CSS, Javascript, and JQuery. This is a simple game based on the old simon game where users will have to memorize a random sequence of lights that they will have to press and as the level gets higher the patters get more complicated.",
