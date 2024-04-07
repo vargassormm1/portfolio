@@ -13,3 +13,9 @@
 .socials li {
   padding: 5px;
 }
+.socials li a {
+  fill: white;
+}
+.socials li a:hover {
+  fill: #76abae;
+}

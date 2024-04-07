@@ -8,11 +8,12 @@
   flex-direction: column;
   align-items: center;
   margin: 10px 0 50px 0;
+  color: white;
 }
 .sectionHeading hr {
   width: 40%;
   height: 2px;
-  background-color: black;
+  background-color: #76abae;
 }
 .projectsContent {
   display: grid;

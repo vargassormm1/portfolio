@@ -9,11 +9,12 @@
   flex-direction: column;
   align-items: center;
   margin: 10px 0 50px 0;
+  color: white;
 }
 .sectionHeading hr {
   width: 40%;
   height: 2px;
-  background-color: black;
+  background-color: #76abae;
 }
 .contactContent {
   display: flex;
@@ -25,13 +26,17 @@
 .contactContent p {
   width: 60%;
   margin-bottom: 50px;
+  color: #eeeeee;
 }
 .contact {
   padding: 10px 15px;
-  border: 2px solid black;
+  border: 2px solid #76abae;
   cursor: pointer;
   text-decoration: none;
   align-self: center;
   margin-right: 10px;
-  color: black;
+  color: #76abae;
+}
+.contact:hover {
+  background-color: #76abae46;
 }

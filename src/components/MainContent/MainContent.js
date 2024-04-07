@@ -8,7 +8,7 @@ const MainContent = () => {
       <div className={styles.mainContent}>
         <h1>Hello I&apos;m</h1>
         <h2>Ralph Sormillon.</h2>
-        <h2>I build websites and web apps</h2>
+        <h3>I build websites and web apps</h3>
         <p>
           I am a software developer based in New Jersey. Building smooth,
           responsive websites and web apps.
