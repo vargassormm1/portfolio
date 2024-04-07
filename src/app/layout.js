@@ -1,6 +1,7 @@
 import { Space_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
+import Socials from "@/components/Socials/Socials";
 
 const spaceMono = Space_Mono({ subsets: ["latin"], weight: ["400", "700"] });
 
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
       <body className={spaceMono.className}>
         <div className="container">
           <Navbar />
+          <Socials />
           {children}
         </div>
       </body>

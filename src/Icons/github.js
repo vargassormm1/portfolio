@@ -3,8 +3,8 @@ const IconGitHub = () => (
     xmlns="http://www.w3.org/2000/svg"
     role="img"
     viewBox="0 0 438.549 438.549"
-    width={30}
-    height={30}
+    width={20}
+    height={20}
   >
     <title>GitHub</title>
     <path

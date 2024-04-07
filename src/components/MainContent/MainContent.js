@@ -20,12 +20,6 @@ const MainContent = () => {
           >
             Let&apos;s Talk
           </a>
-          <a href="" className={styles.icon}>
-            <IconGitHub />
-          </a>
-          <a href="" className={styles.icon}>
-            <IconLinkedin />
-          </a>
         </div>
       </div>
     </div>

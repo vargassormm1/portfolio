@@ -1,0 +1,15 @@
+.container {
+  width: 40px;
+  position: fixed;
+  bottom: 0;
+  left: auto;
+  right: 125px;
+  z-index: 10;
+}
+.socials {
+  list-style-type: none;
+  margin-bottom: 20px;
+}
+.socials li {
+  padding: 5px;
+}
