@@ -4,7 +4,7 @@ import IconLinkedin from "@/Icons/linkedIn";
 
 const MainContent = () => {
   return (
-    <div className={styles.mainSection}>
+    <div id="home" className={styles.mainSection}>
       <div className={styles.mainContent}>
         <h1>Hello I&apos;m</h1>
         <h2>Ralph Sormillon.</h2>
