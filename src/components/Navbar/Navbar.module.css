@@ -10,7 +10,6 @@
   color: #eeeeee;
   background-color: #222831;
 }
-
 .navbar h1 a {
   text-decoration: none;
   color: #eeeeee;
@@ -29,4 +28,16 @@
 .navLinks li a:hover {
   border-bottom: 2px solid #eeeeee;
   transition: all 0.2s ease-out;
+}
+
+@media (max-width: 475px) {
+  .navbar {
+    flex-direction: column;
+  }
+  .navLinks {
+    padding: 0;
+  }
+  .navLinks li {
+    padding: 10px;
+  }
 }

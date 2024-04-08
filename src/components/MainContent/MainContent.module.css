@@ -4,14 +4,15 @@
   align-items: center;
   justify-content: center;
   min-height: calc(100vh - 100px);
+  width: 100%;
 }
-
 .mainContent {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
   padding: 0 100px;
+  width: 100%;
 }
 .mainContent h1 {
   font-size: 15px;
@@ -46,4 +47,25 @@
 }
 .contact:hover {
   background-color: #76abae46;
+}
+
+@media (max-width: 475px) {
+  .mainContent {
+    padding: 0 10px;
+  }
+  .mainContent h1 {
+    font-size: 14px;
+  }
+  .mainContent h2 {
+    font-size: 40px;
+  }
+  .mainContent h3 {
+    font-size: 40px;
+  }
+  .mainContent p {
+    font-size: 14px;
+  }
+  .contact {
+    font-size: 14px;
+  }
 }

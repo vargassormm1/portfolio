@@ -19,3 +19,9 @@
 .socials li a:hover {
   fill: #76abae;
 }
+
+@media (max-width: 475px) {
+  .container {
+    display: none;
+  }
+}
