@@ -43,13 +43,47 @@
   background-color: #76abae46;
 }
 
+.socials {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 50px 0;
+  }
+  .socials {
+    display: flex;
+    list-style-type: none;
+    margin-bottom: 20px;
+    padding: 0;
+  }
+  .socials li {
+    margin: 40px 20px 40px 20px;
+  }
+  .socials li a {
+    fill: white;
+  }
+  .socials li a:hover {
+    fill: #76abae;
   }
 }
 @media (max-width: 475px) {
   .container {
     padding: 50px 0;
+  }
+  .socials {
+    display: flex;
+    list-style-type: none;
+    margin-bottom: 20px;
+    padding: 0;
+  }
+  .socials li {
+    margin: 40px 20px 40px 20px;
+  }
+  .socials li a {
+    fill: white;
+  }
+  .socials li a:hover {
+    fill: #76abae;
   }
 }

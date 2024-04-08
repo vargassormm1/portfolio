@@ -20,6 +20,11 @@
   fill: #76abae;
 }
 
+@media (max-width: 768px) {
+  .container {
+    display: none;
+  }
+}
 @media (max-width: 475px) {
   .container {
     display: none;
