@@ -14,17 +14,17 @@ module.exports = [
     desc: "Baseline is a web application designed for tennis players to keep track of their matches and view their rankings. Built with Next.js and backed by PostgreSQL, it features a robust scoring system to accommodate various match formats and automatically updates a leaderboard to reflect players' standings. Integrated with Prisma for database management and deployed on Vercel for seamless access, Baseline provides a user-friendly platform for tennis communities to engage and compete.",
   },
   {
-    image: "/docchat.jpeg",
-    title: "DocChat",
-    external: "https://docchat-ashen.vercel.app/",
-    github: "https://github.com/vargassormm1/DocChat",
-    desc: "DocChat is a dynamic Next.js web application designed to streamline document analysis. With DocChat, users can effortlessly upload PDFs and engage in informative conversations with an AI assistant. Through this interactive process, DocChat efficiently extracts key information and provides insightful answers from uploaded documents in real-time. It's the perfect tool for those seeking quick and accurate insights from their documents.",
-  },
-  {
     image: "/simon.jpeg",
     title: "Simon Game",
     external: "https://friendly-bassi-500e78.netlify.app/",
     github: "https://github.com/vargassormm1/SimonGame",
     desc: "A vibrant web-based version of the classic Simon game, crafted using HTML, CSS, and JavaScript. This project challenges users with sequences of colors and sounds, testing memory and attention to detail. With increasing complexity, it offers an immersive experience. Utilizing jQuery for animations and event handling, the site is intuitive and accessible across all devices, showcasing creative web development skills.",
+  },
+  {
+    image: "/maze.jpeg",
+    title: "Maze Game",
+    external: "https://vigorous-wilson-7e4725.netlify.app/",
+    github: "https://github.com/vargassormm1/MazeGame",
+    desc: "This is a simple maze game app that runs directly under the browser. User can navigate their way around the maze using the 'AWSD' keys. This game is made using HTML/CSS and Javascript. This app also uses a Javascript library called Matter JS to draw and handle all physics of the game.",
   },
 ];
