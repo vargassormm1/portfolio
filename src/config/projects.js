@@ -1,12 +1,5 @@
 module.exports = [
   {
-    image: "/photography.jpeg",
-    title: "Film/Photography Website",
-    external: "https://www.matejsefcik.com/",
-    github: "https://github.com/vargassormm1/MatejPortfolio",
-    desc: "A custom-crafted website designed to display a client's professional photography portfolio. Created purely with HTML, CSS, and JavaScript, it features an intuitive, responsive gallery with a bespoke lightbox function for detailed image viewing. This site not only elegantly presents the client's work but also includes a straightforward contact form, making it easier for potential clients to get in touch. An ideal combination of style and practicality.",
-  },
-  {
     image: "/docchat.jpeg",
     title: "DocChat",
     external: "https://docchat-ashen.vercel.app/",
@@ -40,5 +33,12 @@ module.exports = [
     external: "https://vigorous-wilson-7e4725.netlify.app/",
     github: "https://github.com/vargassormm1/MazeGame",
     desc: "Maze Runner is a fun HTML5 and JavaScript web app that uses the Matter.js physics engine for an engaging maze game. Players control a ball through a maze, dodging obstacles to reach the end. Each game creates a new maze, so it's always different and challenging. When players finish the maze, they see a 'You Win!' message and can start a new game with a single click.",
+  },
+  {
+    image: "/photography.jpeg",
+    title: "Film/Photography Website",
+    external: "https://www.matejsefcik.com/",
+    github: "https://github.com/vargassormm1/MatejPortfolio",
+    desc: "A custom-crafted website designed to display a client's professional photography portfolio. Created purely with HTML, CSS, and JavaScript, it features an intuitive, responsive gallery with a bespoke lightbox function for detailed image viewing. This site not only elegantly presents the client's work but also includes a straightforward contact form, making it easier for potential clients to get in touch. An ideal combination of style and practicality.",
   },
 ];

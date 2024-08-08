@@ -17,8 +17,12 @@ const ProjectCard = ({ image, external, github, title, desc }) => {
         <h3>{title}</h3>
         <p>{desc}</p>
         <div className={styles.projectLinks}>
-          <a href={github}>Code</a>
-          <a href={external}>Live</a>
+          <a href={github} target="_blank">
+            Code
+          </a>
+          <a href={external} target="_blank">
+            Live
+          </a>
         </div>
       </div>
     </div>
