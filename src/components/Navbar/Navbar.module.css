@@ -50,23 +50,25 @@
 @media (max-width: 475px) {
   .navbar {
     flex-direction: column;
-    height: 200px;
+    height: 170px;
   }
   .navLinks li {
     padding: 0 10px;
+    font-size: 15px;
   }
   .socials {
     display: flex;
     justify-content: center;
     list-style-type: none;
     padding: 0;
-    margin: 0;
+    margin: 20px 0 0 0;
   }
   .socials li {
-    margin: 10px;
+    margin: 5px;
   }
   .socials li a {
     fill: white;
+    font-size: 15px;
   }
   .socials li a:hover {
     fill: #76abae;
