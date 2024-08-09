@@ -55,6 +55,9 @@
 .socials li a:hover {
   fill: #76abae;
 }
+.socials li a svg {
+  display: block;
+}
 
 @media (max-width: 1536px) {
 }

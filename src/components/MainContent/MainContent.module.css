@@ -49,23 +49,35 @@
   background-color: #76abae46;
 }
 
+@media (max-width: 1536px) {
+}
+@media (max-width: 1366px) {
+}
+@media (max-width: 1280px) {
+}
+@media (max-width: 1024px) {
+}
+@media (max-width: 768px) {
+}
+@media (max-width: 640px) {
+  .mainContent {
+    padding: 0 50px;
+  }
+  .mainContent h2 {
+    font-size: 50px;
+  }
+  .mainContent h3 {
+    font-size: 50px;
+  }
+}
 @media (max-width: 475px) {
   .mainContent {
-    padding: 0 10px;
-  }
-  .mainContent h1 {
-    font-size: 14px;
+    padding: 0 25px;
   }
   .mainContent h2 {
     font-size: 40px;
   }
   .mainContent h3 {
     font-size: 40px;
-  }
-  .mainContent p {
-    font-size: 14px;
-  }
-  .contact {
-    font-size: 14px;
   }
 }

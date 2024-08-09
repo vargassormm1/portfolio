@@ -66,6 +66,9 @@
   .socials li a:hover {
     fill: #76abae;
   }
+  .contactContent p {
+    width: 70%;
+  }
 }
 @media (max-width: 475px) {
   .container {
@@ -85,5 +88,8 @@
   }
   .socials li a:hover {
     fill: #76abae;
+  }
+  .contactContent p {
+    width: 80%;
   }
 }
