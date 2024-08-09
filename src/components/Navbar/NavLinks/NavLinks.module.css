@@ -1,19 +1,17 @@
-.navbar {
+.container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  height: 100px;
-  width: 100%;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  color: #eeeeee;
-  background-color: #222831;
+  gap: 5px;
 }
-.logo {
-  margin: 0;
+
+.link {
+  margin: 0 20px;
   text-decoration: none;
-  color: #eeeeee;
+  color: black;
+}
+
+.link:hover {
+  border-bottom: 1px solid black;
 }
 
 @media (max-width: 1536px) {
@@ -23,8 +21,17 @@
 @media (max-width: 1280px) {
 }
 @media (max-width: 1024px) {
+  .container {
+    gap: 0;
+  }
+  .link {
+    margin: 0 15px;
+  }
 }
 @media (max-width: 768px) {
+  .container {
+    display: none;
+  }
 }
 @media (max-width: 640px) {
 }
