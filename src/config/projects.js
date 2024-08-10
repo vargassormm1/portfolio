@@ -14,13 +14,6 @@ module.exports = [
     desc: "A vibrant web-based version of the classic Simon game, crafted using HTML, CSS, and JavaScript. This project challenges users with sequences of colors and sounds, testing memory and attention to detail. With increasing complexity, it offers an immersive experience. Utilizing jQuery for animations and event handling, the site is intuitive and accessible across all devices, showcasing creative web development skills.",
   },
   {
-    image: "/tubetalks.jpeg",
-    title: "TubeTalks",
-    external: "https://tube-talks.vercel.app/",
-    github: "https://github.com/vargassormm1/TubeTalks",
-    desc: "TubeTalks is a web application that transforms how users interact with YouTube videos. By entering a video link into TubeTalks, users can converse with an AI to delve into the content, gaining insights and discussing various aspects of the videos. This innovative platform enables users to engage with AI effectively, enriching their exploration of YouTube content.",
-  },
-  {
     image: "/baseline.jpeg",
     title: "Baseline",
     external: "https://base-line.vercel.app/",
@@ -40,5 +33,12 @@ module.exports = [
     external: "https://www.matejsefcik.com/",
     github: "https://github.com/vargassormm1/MatejPortfolio",
     desc: "A custom-crafted website designed to display a client's professional photography portfolio. Created purely with HTML, CSS, and JavaScript, it features an intuitive, responsive gallery with a bespoke lightbox function for detailed image viewing. This site not only elegantly presents the client's work but also includes a straightforward contact form, making it easier for potential clients to get in touch. An ideal combination of style and practicality.",
+  },
+  {
+    image: "/tubetalks.jpeg",
+    title: "TubeTalks",
+    external: null,
+    github: "https://github.com/vargassormm1/TubeTalks",
+    desc: "TubeTalks is a web application that transforms how users interact with YouTube videos. By entering a video link into TubeTalks, users can converse with an AI to delve into the content, gaining insights and discussing various aspects of the videos. This innovative platform enables users to engage with AI effectively, enriching their exploration of YouTube content.",
   },
 ];

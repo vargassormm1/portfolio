@@ -20,9 +20,11 @@ const ProjectCard = ({ image, external, github, title, desc }) => {
           <a href={github} target="_blank">
             Code
           </a>
-          <a href={external} target="_blank">
-            Live
-          </a>
+          {external && (
+            <a href={external} target="_blank">
+              Live
+            </a>
+          )}
         </div>
       </div>
     </div>
