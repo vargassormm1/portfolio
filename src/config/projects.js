@@ -1,11 +1,5 @@
 module.exports = [
-  {
-    image: "/docchat.jpeg",
-    title: "DocChat",
-    external: "https://docchat-ashen.vercel.app/",
-    github: "https://github.com/vargassormm1/DocChat",
-    desc: "DocChat is a dynamic Next.js web application designed to streamline document analysis. With DocChat, users can effortlessly upload PDFs and engage in informative conversations with an AI assistant. Through this interactive process, DocChat efficiently extracts key information and provides insightful answers from uploaded documents in real-time. It's the perfect tool for those seeking quick and accurate insights from their documents.",
-  },
+
   {
     image: "/simon.jpeg",
     title: "Simon Game",
@@ -19,6 +13,13 @@ module.exports = [
     external: "https://base-line.vercel.app/",
     github: "https://github.com/vargassormm1/BaseLine",
     desc: "Baseline is a web application designed for tennis players to keep track of their matches and view their rankings. Built with Next.js and backed by PostgreSQL, it features a robust scoring system to accommodate various match formats and automatically updates a leaderboard to reflect players' standings. Integrated with Prisma for database management and deployed on Vercel for seamless access, Baseline provides a user-friendly platform for tennis communities to engage and compete.",
+  },
+  {
+    image: "/docchat.jpeg",
+    title: "DocChat",
+    external: null,
+    github: "https://github.com/vargassormm1/DocChat",
+    desc: "DocChat is a dynamic Next.js web application designed to streamline document analysis. With DocChat, users can effortlessly upload PDFs and engage in informative conversations with an AI assistant. Through this interactive process, DocChat efficiently extracts key information and provides insightful answers from uploaded documents in real-time. It's the perfect tool for those seeking quick and accurate insights from their documents.",
   },
   {
     image: "/maze.jpeg",
