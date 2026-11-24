@@ -21,8 +21,10 @@ export function Header() {
     panel.current?.querySelector<HTMLElement>("a")?.focus();
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") { setOpen(false); button.current?.focus(); } };
     const onResize = () => { if (window.innerWidth >= 768) setOpen(false); };
+    const onDown = (e: PointerEvent) => { const t = e.target as Node; if (!panel.current?.contains(t) && !button.current?.contains(t)) setOpen(false); };
+    document.addEventListener("pointerdown", onDown);
     window.addEventListener("keydown", onKey); window.addEventListener("resize", onResize);
-    return () => { window.removeEventListener("keydown", onKey); window.removeEventListener("resize", onResize); };
+    return () => { window.removeEventListener("keydown", onKey); window.removeEventListener("resize", onResize); document.removeEventListener("pointerdown", onDown); };
   }, [open]);
   return (
     <header className="no-print sticky top-0 z-30 border-b border-line bg-bg/95 supports-[backdrop-filter]:bg-bg/85 supports-[backdrop-filter]:backdrop-blur-md">

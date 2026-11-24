@@ -1,5 +1,5 @@
 // Machine-readable views of src/content: JSON-LD, JSON Resume, plain text and llms.txt. One source, many formats.
-import { abs, SITE_URL } from "@/content/site";
+import { abs, CONTENT_UPDATED, SITE_URL } from "@/content/site";
 import { INSTAGRAM, PROFILE, RESUME_PDF, SOCIALS } from "@/content/profile";
 import { EDUCATION, EXPERIENCE, range, type Job } from "@/content/experience";
 import { ALL_SKILLS, SKILLS } from "@/content/skills";
@@ -21,7 +21,7 @@ export function personLd() {
     alumniOf: { "@type": "CollegeOrUniversity", name: EDUCATION.school },
     homeLocation: { "@type": "Place", name: PROFILE.region },
     hasOccupation: { "@type": "Occupation", name: PROFILE.title, occupationLocation: { "@type": "Place", name: PROFILE.region }, skills: ALL_SKILLS.join(", ") },
-    knowsAbout: [...EXPERTISE.map((e) => e.title), ...ALL_SKILLS],
+    knowsAbout: [...EXPERTISE.map((e) => e.title), "TypeScript", "React", "Next.js", "Node.js", "PHP", "Laravel", "Python", "FastAPI", "AWS", "Docker", "MySQL", "PostgreSQL", "SQL Server"],
   };
 }
 
@@ -30,7 +30,7 @@ export function homeLd() {
     "@context": "https://schema.org",
     "@graph": [
       { "@type": "WebSite", "@id": SITE_ID, url: abs("/"), name: PROFILE.name, publisher: { "@id": PERSON_ID }, inLanguage: "en-US" },
-      { "@type": "ProfilePage", "@id": `${abs("/")}#profilepage`, url: abs("/"), name: `${PROFILE.name} | ${PROFILE.title}`, isPartOf: { "@id": SITE_ID }, mainEntity: { "@id": PERSON_ID }, dateModified: new Date().toISOString().slice(0, 10) },
+      { "@type": "ProfilePage", "@id": `${abs("/")}#profilepage`, url: abs("/"), name: `${PROFILE.name} | ${PROFILE.title}`, isPartOf: { "@id": SITE_ID }, mainEntity: { "@id": PERSON_ID }, dateModified: CONTENT_UPDATED },
       personLd(),
     ],
   };
@@ -92,7 +92,7 @@ export function jsonResume() {
       ...FEATURED.map((p) => ({ name: p.name, description: p.summary, highlights: p.challenges.map((c) => c.title), keywords: p.stack, url: p.links[0]?.href ?? abs(`/projects/${p.slug}`), ...(p.caseStudy ? { entity: abs(`/projects/${p.slug}`) } : {}) })),
       ...ARCHIVE.filter((a) => a.href).map((a) => ({ name: a.name, description: a.body, url: a.href! })),
     ],
-    meta: { canonical: abs("/resume.json"), lastModified: new Date().toISOString().slice(0, 10) },
+    meta: { canonical: abs("/resume.json"), lastModified: CONTENT_UPDATED },
   };
 }
 
@@ -127,7 +127,7 @@ export function llmsTxt() {
     "",
     `> ${PROFILE.title} at ${PROFILE.employer}, ${PROFILE.region}. ${PROFILE.summary}`,
     "",
-    "This site is the canonical, public record of Ralph's professional background, projects and contact details. Professional work is described at a high level to respect employer confidentiality.",
+    "Ralph's personal site: experience, projects and contact details. Professional work is described at a high level to respect employer confidentiality.",
     "",
     "## Profile",
     `- [Resume (HTML)](${abs("/resume")}): experience, skills, projects and education`,

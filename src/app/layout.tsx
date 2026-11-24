@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { INDEXABLE, SITE_URL, VERIFICATION } from "@/content/site";
+import { INDEXABLE, OG, SITE_URL, VERIFICATION } from "@/content/site";
 import { PROFILE } from "@/content/profile";
 import "./globals.css";
 
@@ -17,8 +17,7 @@ export const metadata: Metadata = {
   applicationName: PROFILE.name,
   authors: [{ name: PROFILE.name, url: SITE_URL }],
   creator: PROFILE.name,
-  alternates: { canonical: "/" },
-  openGraph: { type: "profile", siteName: PROFILE.name, title: `${PROFILE.name} | Software Engineer`, description, url: "/", firstName: "Ralph", lastName: "Vargas Sormillon", locale: "en_US" },
+  openGraph: { ...OG, type: "profile", title: `${PROFILE.name} | Software Engineer`, description, url: "/", firstName: "Ralph", lastName: "Vargas Sormillon" },
   twitter: { card: "summary_large_image", title: `${PROFILE.name} | Software Engineer`, description },
   robots: INDEXABLE ? { index: true, follow: true } : { index: false, follow: false },
   verification: { ...(VERIFICATION.google ? { google: VERIFICATION.google } : {}), ...(VERIFICATION.bing ? { other: { "msvalidate.01": VERIFICATION.bing } } : {}) },

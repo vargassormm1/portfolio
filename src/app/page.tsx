@@ -11,6 +11,8 @@ import { JsonLd } from "@/components/JsonLd";
 import { Screens } from "@/components/Screens";
 import { homeLd } from "@/lib/identity";
 
+export const metadata = { alternates: { canonical: "/" } };
+
 const Ext = () => <ArrowUpRight size={16} aria-hidden="true" className="shrink-0" />;
 const newTab = <span className="sr-only"> (opens in a new tab)</span>;
 
@@ -200,7 +202,7 @@ export default function Home() {
         <div className="wrap py-16 lg:py-28">
           <p className="kicker">Contact</p>
           <h2 id="contact-title" className="h-display mt-3 max-w-[16ch]">Let&apos;s build something.</h2>
-          <p className="mt-5 max-w-[54ch] text-lg leading-relaxed text-ink-2">Have an interesting problem to solve, or want to talk engineering? I&apos;m always happy to connect with other engineers and hear about interesting work.</p>
+          <p className="mt-5 max-w-[54ch] text-lg leading-relaxed text-ink-2">Got a tricky problem, a project idea, or just want to talk shop? I&apos;m always happy to hear from other engineers and people building things.</p>
           <a href={mailto()} className="mt-8 inline-block text-[clamp(1.25rem,1rem+1.6vw,2rem)] font-semibold tracking-[-0.02em] break-all underline decoration-line-strong decoration-2 underline-offset-[6px] transition-colors hover:decoration-ink">{PROFILE.email}</a>
           <div className="mt-8 flex flex-wrap gap-3">
             {SOCIALS.map((s) => <a key={s.id} href={s.href} target="_blank" rel="me noopener noreferrer" className="btn btn-secondary">{s.label === "LinkedIn" ? "Connect on LinkedIn" : "GitHub"}<Ext />{newTab}</a>)}

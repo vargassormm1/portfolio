@@ -106,6 +106,8 @@ test("security headers; every outside link opens safely; the private app isn't l
   expect(h["content-security-policy"]).toContain("frame-ancestors 'none'");
   expect(h["x-content-type-options"]).toBe("nosniff");
   expect(h["x-powered-by"]).toBeUndefined();
+  expect(h["x-robots-tag"]).toBeUndefined(); // production build: indexable
+  expect(await (await request.get("/nope")).text()).not.toContain('rel="canonical"');
   await page.goto("/");
   for (const a of await page.locator('a[target="_blank"]').all()) await expect(a).toHaveAttribute("rel", /noopener/);
   const hrefs = await page.locator("a").evaluateAll((as) => as.map((a) => (a as HTMLAnchorElement).href));

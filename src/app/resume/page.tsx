@@ -4,7 +4,7 @@ import { EDUCATION, EXPERIENCE, range } from "@/content/experience";
 import { SKILLS } from "@/content/skills";
 import { FEATURED } from "@/content/projects";
 import { ENGINEERING } from "@/content/engineering";
-import { abs } from "@/content/site";
+import { abs, OG } from "@/content/site";
 import { JsonLd } from "@/components/JsonLd";
 import { resumeLd } from "@/lib/identity";
 
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "Resume",
   description: `Resume of ${PROFILE.name}, Software Engineer at ${PROFILE.employer} in the ${PROFILE.region}: experience, skills, projects and education.`,
   alternates: { canonical: "/resume" },
-  openGraph: { url: "/resume", title: `Resume | ${PROFILE.name}` },
+  openGraph: { ...OG, url: "/resume", title: `Resume | ${PROFILE.name}` },
 };
 
 /** The recruiter view: plain headings, one column, everything in the HTML, prints cleanly. */
@@ -46,7 +46,7 @@ export default function Resume() {
         {EXPERIENCE.map((j) => (
           <article key={j.company + j.start} className="print-break-avoid mt-5 print:mt-2.5">
             <div className="flex flex-wrap items-baseline justify-between gap-x-4">
-              <h3 className="font-semibold">{j.title}, {j.company}<span className="hidden print:inline"> | </span></h3>
+              <h3 className="font-semibold">{j.title}, {j.company}</h3><span aria-hidden="true" className="hidden print:inline"> | </span>
               <p className="num text-sm text-ink-2"><time dateTime={j.start}>{range(j).split(" – ")[0]}</time> – {j.end ? <time dateTime={j.end}>{range(j).split(" – ")[1]}</time> : "Present"}</p>
             </div>
             <p className="text-sm text-ink-2">{j.type}, {j.location}</p>

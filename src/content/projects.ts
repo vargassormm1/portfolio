@@ -22,7 +22,7 @@ const desk = (src: string, alt: string): Shot => ({ src, alt, w: 2160, h: 1350 }
 
 export const FEATURED: Project[] = [
   {
-    slug: "guap", name: "Guap", category: "Personal project, finance", status: "Live", started: "2026-11",
+    slug: "guap", name: "Guap", category: "Personal project, finance", status: "Live", started: "Nov 2026",
     summary: "A personal cash-flow app that brings account balances, transactions, upcoming bills and a spending forecast into one mobile-first view.",
     headline: "I got tired of budgeting in spreadsheets. So I built my own finance app.",
     caption: "Built for an audience of one: me.",
@@ -48,7 +48,7 @@ export const FEATURED: Project[] = [
       { title: "Protecting financial data", body: "Single-owner sign-in with TOTP two-factor, row-level security on every table, and the bank connection secret encrypted at rest. The service worker caches only static files, never financial data." },
       { title: "A demo that can't leak", body: "The demo reuses the real screens and calculations over a fictional person, with state kept in the visitor's own cookie and no database access at all." },
     ],
-    stack: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "SimpleFIN", "Tailwind CSS", "PWA", "Drizzle", "Vitest", "Vercel"],
+    stack: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "SimpleFIN", "Tailwind CSS", "PWA", "Vitest", "Vercel"],
     links: [{ label: "Explore the interactive demo", href: "https://guap-tau.vercel.app/demo", kind: "demo" }],
     demoNote: "No account needed. Every name and number in the demo is made up.",
     repo: "private",
@@ -62,7 +62,7 @@ export const FEATURED: Project[] = [
       goals: ["One trustworthy safe-to-spend number with an explainable breakdown", "Automatic sync with nothing changed without review", "Correct handling of transfers, card payments, reimbursements and pending charges", "Strong protection for personal financial data", "A public demo that shows the real product without real data"],
       architecture: [
         "Next.js App Router with Server Components for reads and Server Actions for writes; no public API returns financial data.",
-        "Supabase Postgres with row-level security, accessed through Drizzle with the owner's identity applied per request, and a minimal role for the scheduled sync.",
+        "Supabase Postgres with row-level security on every table: the app reads through the Supabase client with the owner's session, and the scheduled sync connects with postgres.js as a minimal, dedicated role.",
         "A daily SimpleFIN sync stores raw transactions unchanged; a separate allocation layer classifies them as spending, transfers, reimbursements, loans or savings.",
         "A pure TypeScript finance engine (unit-tested with Vitest) computes the plan from those inputs.",
         "Deployed on Vercel as an installable PWA.",
@@ -70,7 +70,7 @@ export const FEATURED: Project[] = [
     },
   },
   {
-    slug: "baseline", name: "Baseline", category: "Personal project, sports", status: "Live", started: "2024",
+    slug: "baseline", name: "Baseline", category: "Personal project, sports", status: "Live", started: "Mar 2024",
     summary: "A tennis and pickleball platform where friends record matches, confirm results, follow rankings and keep head-to-head records.",
     headline: "Turning friendly matches into serious competition.",
     caption: "Because bragging rights deserve a database.",
@@ -87,7 +87,7 @@ export const FEATURED: Project[] = [
       "Invite-only sign-up with Google or a username, installable as an app",
     ],
     challenges: [
-      { title: "Scores that can't be wrong", body: "Every format follows the official rules (ITF Rules of Tennis and USA Pickleball). Scores are validated in TypeScript as you type and again inside Postgres, and both run the same shared test cases. On 54,043 generated scores they never disagreed." },
+      { title: "Scores that can't be wrong", body: "Every format follows the official rules (ITF Rules of Tennis and USA Pickleball). Scores are validated in TypeScript as you type and again inside Postgres, and both validators run against the same shared file of test cases so they can't drift apart." },
       { title: "Results both sides agree on", body: "A match records as pending; only a player on the other side can confirm it. The database computes the winner and fixes the points at confirmation, so the browser never decides either." },
       { title: "Teams without team accounts", body: "Doubles partnerships are derived from matches, keyed by the sorted pair of players, so the same partners in any order are one team. Points follow each player whoever they partner." },
       { title: "Sports that never mix", body: "Tennis and pickleball, singles and doubles each have separate tables and boards. Adding pickleball and doubles was purely additive, with existing tennis data verified unchanged before and after." },
@@ -135,7 +135,7 @@ export const FEATURED: Project[] = [
 ];
 
 export const ARCHIVE = [
-  { name: "TeeTime Scout", status: "In development", body: "Finding a good weekend tee time at a public course in New Jersey is a competitive sport of its own. Instead of refreshing booking sites, I'm building a tool that watches for openings that fit my group and tells me when one appears. The monitoring engine runs; the app is next. I'd rather spend Saturday playing golf than looking for somewhere to play.", stack: "Next.js, Supabase, pg_cron", href: null as string | null, linkLabel: null as string | null },
+  { name: "TeeTime Scout", status: "In development", body: "Finding a good weekend tee time at a public course in New Jersey is a competitive sport of its own. Instead of refreshing booking sites, I'm prototyping a tool that would tell me when an opening fits my group. Early days, and not public. I'd rather spend Saturday playing golf than looking for somewhere to play.", stack: "Next.js, Supabase", href: null as string | null, linkLabel: null as string | null },
   { name: "TubeTalks", status: "Archived", body: "A follow-up experiment to DocChat: paste a YouTube link and ask questions about the video.", stack: "Next.js, LangChain, OpenAI", href: "https://github.com/vargassormm1/TubeTalks", linkLabel: "Source code" },
   { name: "Matej Sefcik Photography", status: "Live", body: "A portfolio site for a film and photography client, with a custom gallery, lightbox and contact form.", stack: "HTML, CSS, JavaScript", href: "https://www.matejsefcik.com/", linkLabel: "Visit site" },
   { name: "Maze Game", status: "Archived", body: "One of my first projects: a browser maze with a physics engine and a new layout every game.", stack: "JavaScript, Matter.js", href: "https://vigorous-wilson-7e4725.netlify.app/", linkLabel: "Play" },

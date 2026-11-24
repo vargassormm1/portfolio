@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { caseStudies } from "@/content/projects";
 import { PROFILE } from "@/content/profile";
+import { OG } from "@/content/site";
 import { JsonLd } from "@/components/JsonLd";
 import { projectLd } from "@/lib/identity";
 
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const p = caseStudies.find((x) => x.slug === slug);
   if (!p) return {};
   const title = `${p.name}: ${p.headline.replace(/\.$/, "")}`;
-  return { title, description: `${p.summary} A case study by ${PROFILE.name}, built with ${p.stack.slice(0, 5).join(", ")}.`, alternates: { canonical: `/projects/${p.slug}` }, openGraph: { url: `/projects/${p.slug}`, title, type: "article" } };
+  return { title, description: `${p.summary} A case study by ${PROFILE.name}, built with ${p.stack.slice(0, 5).join(", ")}.`, alternates: { canonical: `/projects/${p.slug}` }, openGraph: { ...OG, url: `/projects/${p.slug}`, title, type: "article" } };
 }
 
 export default async function CaseStudy({ params }: { params: Promise<{ slug: string }> }) {
@@ -29,13 +30,13 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
       <JsonLd data={projectLd(p)} />
       <article>
         <header className="wrap pt-10 pb-12 sm:pt-16">
-          <nav aria-label="Breadcrumb" className="text-sm"><Link href="/#work" className="link inline-flex items-center gap-1.5 text-ink-2"><ArrowLeft size={15} aria-hidden="true" />Things I&apos;ve built</Link></nav>
+          <nav aria-label="Back" className="text-sm"><Link href="/#work" className="link inline-flex items-center gap-1.5 text-ink-2"><ArrowLeft size={15} aria-hidden="true" />Things I&apos;ve built</Link></nav>
           <p className="kicker mt-8">Case study: {p.category.toLowerCase()}</p>
           <h1 className="h-display mt-3 max-w-[18ch]">{p.name}</h1>
           <p className="mt-3 max-w-[40ch] text-xl font-medium text-ink-2">{p.headline}</p>
           <dl className="mt-8 grid max-w-[760px] grid-cols-2 gap-x-8 gap-y-4 border-y border-line py-5 text-sm sm:grid-cols-4">
             <div><dt className="text-ink-3">Status</dt><dd className="font-medium">{p.status}</dd></div>
-            <div><dt className="text-ink-3">Role</dt><dd className="font-medium">Sole developer</dd></div>
+            <div><dt className="text-ink-3">Role</dt><dd className="font-medium">Design and development</dd></div>
             <div><dt className="text-ink-3">Source</dt><dd className="font-medium">{p.repo === "public" ? "Public" : "Private"}</dd></div>
             <div><dt className="text-ink-3">Started</dt><dd className="num font-medium">{p.started}</dd></div>
           </dl>

@@ -11,7 +11,7 @@ export function Footer() {
           <p className="mt-3 text-xs text-ink-3">© {new Date().getFullYear()} {PROFILE.name}. Built with curiosity and too many browser tabs.</p>
         </div>
         <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
-          {SOCIALS.map((s) => <li key={s.id}><a href={s.href} rel="me noopener noreferrer" target="_blank" className="link">{s.label}</a></li>)}
+          {SOCIALS.map((s) => <li key={s.id}><a href={s.href} rel="me noopener noreferrer" target="_blank" className="link">{s.label}<span className="sr-only"> (opens in a new tab)</span></a></li>)}
           <li><a href={mailto()} className="link">Email</a></li>
           <li><Link href="/resume" className="link">Resume</Link></li>
           <li><a href="#top" className="link">Back to top</a></li>

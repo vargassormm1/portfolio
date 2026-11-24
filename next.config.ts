@@ -16,6 +16,9 @@ const headers = [
   { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
   { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains" },
 ];
+// Previews and local builds: also tell crawlers not to index any file (robots.txt alone hides the noindex meta).
+const indexable = process.env.VERCEL_ENV === "production" || process.env.FORCE_INDEXABLE === "1";
+if (!indexable) headers.push({ key: "X-Robots-Tag", value: "noindex, nofollow" });
 const config: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,

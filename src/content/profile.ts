@@ -24,7 +24,7 @@ export const PROFILE = {
   interests: [
     { title: "Tennis", body: "Slightly obsessed. It's the reason Baseline exists." },
     { title: "Golf", body: "Working on my game, and the reason TeeTime Scout exists." },
-    { title: "Side projects", body: "Tools for my own life that sometimes turn into real products." },
+    { title: "Side projects", body: "Small tools for my own life and my friends', usually bigger than planned." },
     { title: "New tech", body: "Especially practical uses of AI, the kind that save real time." },
   ],
 };
