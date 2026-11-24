@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+/* ---- design tokens (light only, by design: one carefully tuned theme) ---- */
+:root {
+  --bg: #fafaf8;        /* warm off-white */
+  --surface: #ffffff;
+  --sunk: #f2f2ee;      /* quiet panels */
+  --ink: #111513;       /* near-black */
+  --ink-2: #4a524e;     /* secondary text, 7.6:1 on bg */
+  --ink-3: #636b67;     /* tertiary text, 5.3:1 on bg */
+  --line: #e3e4df;
+  --line-strong: #cdcfc8;
+  --accent: #1d6b52;    /* forest green, 6.0:1 on bg */
+  --accent-ink: #145340;
+  --accent-soft: #e5efe9;
+  --dark: #121614;      /* the one dark section */
+  --dark-2: #a9b3ae;
+  --dark-line: rgb(255 255 255 / 0.12);
+  --focus: #1d6b52;
+  --shadow-sm: 0 1px 2px rgb(17 21 19 / 0.06);
+  --shadow-md: 0 1px 2px rgb(17 21 19 / 0.05), 0 12px 32px -16px rgb(17 21 19 / 0.22);
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur-fast: 160ms; --dur: 240ms; --dur-slow: 420ms;
+  --header-h: 60px;
+}
+@theme inline {
+  --color-bg: var(--bg); --color-surface: var(--surface); --color-sunk: var(--sunk);
+  --color-ink: var(--ink); --color-ink-2: var(--ink-2); --color-ink-3: var(--ink-3);
+  --color-line: var(--line); --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent); --color-accent-ink: var(--accent-ink); --color-accent-soft: var(--accent-soft);
+  --color-dark: var(--dark); --color-dark-2: var(--dark-2); --color-dark-line: var(--dark-line);
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius-sm: 6px; --radius-md: 10px; --radius-lg: 14px;
+  --shadow-card: var(--shadow-md);
+  --ease-brand: var(--ease);
+  /* type scale (1.25 minor third-ish, fluid at the top) */
+  --text-xs: 0.8125rem; --text-xs--line-height: 1.25rem;
+  --text-sm: 0.875rem; --text-sm--line-height: 1.375rem;
+  --text-base: 1rem; --text-base--line-height: 1.625rem;
+  --text-lg: 1.125rem; --text-lg--line-height: 1.75rem;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); -webkit-text-size-adjust: 100%; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
+::selection { background: var(--accent-soft); color: var(--ink); }
+
+@layer components {
+  .wrap { width: 100%; max-width: 1120px; margin-inline: auto; padding-inline: 20px; }
+  @media (min-width: 640px) { .wrap { padding-inline: 32px; } }
+  .h-display { font-size: clamp(2.25rem, 1.4rem + 3.6vw, 4rem); line-height: 1.04; letter-spacing: -0.035em; font-weight: 600; text-wrap: balance; }
+  .h-section { font-size: clamp(1.75rem, 1.3rem + 1.9vw, 2.5rem); line-height: 1.1; letter-spacing: -0.03em; font-weight: 600; text-wrap: balance; }
+  .h-sub { font-size: 1.25rem; line-height: 1.4; letter-spacing: -0.015em; font-weight: 600; }
+  .kicker { font-size: var(--text-sm); font-weight: 500; color: var(--accent); }
+  .prose-muted { color: var(--ink-2); }
+  .num { font-variant-numeric: tabular-nums; }
+  .tag { display: inline-flex; align-items: center; height: 26px; padding-inline: 9px; border-radius: var(--radius-sm); background: var(--sunk); color: var(--ink-2); font-size: var(--text-xs); font-weight: 500; white-space: nowrap; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 44px; padding-inline: 18px; border-radius: var(--radius-md); font-weight: 500; font-size: 0.9375rem; transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease); }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--ink); color: var(--bg); }
+  .btn-primary:hover { background: #26302b; }
+  .btn-secondary { background: var(--surface); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line-strong); }
+  .btn-secondary:hover { box-shadow: inset 0 0 0 1px var(--ink-3); }
+  .link { display: inline-flex; align-items: center; min-height: 24px; color: var(--ink); text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 4px; text-decoration-thickness: 1px; transition: text-decoration-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease); }
+  .link:hover { text-decoration-color: currentColor; }
+  .navlink { position: relative; display: inline-flex; align-items: center; min-height: 32px; color: var(--ink-2); transition: color var(--dur-fast) var(--ease); }
+  .navlink::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 1.5px; background: var(--ink); transform: scaleX(0); transform-origin: left; transition: transform var(--dur) var(--ease); }
+  .navlink:hover { color: var(--ink); }
+  .navlink:hover::after { transform: scaleX(1); }
+  .shot { overflow: hidden; border-radius: var(--radius-lg); background: var(--surface); box-shadow: 0 0 0 1px var(--line), var(--shadow-md); }
+  .shot img { transition: transform var(--dur-slow) var(--ease); }
+  .group:hover .shot img { transform: scale(1.012); }
+}
+
+/* Section entrance: CSS scroll-driven, only where supported and motion is welcome. Content is never hidden without it. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal { animation: reveal linear both; animation-timeline: view(); animation-range: entry 0% entry 35%; }
+  }
+}
+@keyframes reveal { from { opacity: 0.001; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 1ms !important; animation-duration: 1ms !important; }
+}
+
+/* Print (the resume page): no chrome, ink on paper, links spelled out where useful. */
+@media print {
+  @page { margin: 12mm 14mm; }
+  body { background: #fff; color: #000; font-size: 9.5pt; line-height: 1.38; }
+  h1 { font-size: 20pt !important; }
+  .no-print { display: none !important; }
+  a { color: #000; text-decoration: none; }
+  .print-break-avoid { break-inside: avoid; }
+}
