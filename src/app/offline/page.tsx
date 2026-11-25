@@ -1,5 +1,6 @@
 import Link from "next/link";
-export const metadata = { title: "Offline", robots: { index: false, follow: false } };
+import { OG } from "@/content/site";
+export const metadata = { title: "Offline", robots: { index: false, follow: false }, openGraph: { ...OG, url: "/offline" } };
 export default function Offline() {
   return (
     <main id="main" className="wrap py-24 sm:py-32">

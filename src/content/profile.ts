@@ -4,7 +4,7 @@ export const PROFILE = {
   firstName: "Ralph",
   title: "Software Engineer",
   employer: "Alliance Advisors",
-  region: "New York City Metropolitan Area",
+  region: "New Jersey, New York City Metropolitan Area",
   regionShort: "New Jersey, USA",
   country: "US",
   email: "ralphvargassorm@gmail.com",
@@ -18,7 +18,7 @@ export const PROFILE = {
   about: [
     "I'm a software engineer based in New Jersey and a Computer Science graduate from Montclair State University.",
     "I like working across the whole stack, from user interfaces and APIs to databases, deployments, and figuring out why something isn't working in production.",
-    "Outside of work I spend a lot of time playing tennis, golfing and working on personal projects. Most of what I build are tools I wanted to use myself.",
+    "Most of what I build outside of work started as something I wanted for myself or my friends, like Guap and Baseline."
   ],
 };
 
@@ -26,7 +26,6 @@ export const SOCIALS = [
   { id: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/in/ralph-vargas-sormillon/" },
   { id: "github", label: "GitHub", href: "https://github.com/vargassormm1" },
 ] as const;
-export const INSTAGRAM = "https://www.instagram.com/ralphvargas_/";
 
 export const mailto = (subject: string = PROFILE.emailSubject) => `mailto:${PROFILE.email}?subject=${encodeURIComponent(subject)}`;
 

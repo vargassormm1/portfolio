@@ -9,7 +9,7 @@ export function Screens({ p, sizes = "(min-width: 1024px) 560px, 100vw" }: { p: 
   return (
     <>
       {phones.length ? (
-        <div className="mx-auto grid max-w-[340px] grid-cols-2 gap-3 sm:hidden">
+        <div className="mx-auto grid max-w-[340px] grid-cols-2 items-start gap-3 sm:hidden">
           {phones.slice(0, 2).map((s, i) => <div key={s.src} className={`overflow-hidden rounded-[16px] ring-1 ring-line-strong ${i ? "mt-6" : ""}`}><Image src={s.src} alt={s.alt} width={s.w} height={s.h} sizes="45vw" className="block h-auto w-full" /></div>)}
         </div>
       ) : null}

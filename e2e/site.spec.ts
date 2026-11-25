@@ -71,10 +71,11 @@ test("structured data: a valid ProfilePage about one Person, consistent across p
   expect(graph.find((n) => n["@type"] === "ProfilePage")!.mainEntity["@id"]).toBe(person["@id"]);
   expect(person).toMatchObject({ name: "Ralph Vargas Sormillon", alternateName: "Ralph Vargas", jobTitle: "Software Engineer", worksFor: { name: "Alliance Advisors" }, alumniOf: { name: "Montclair State University" } });
   expect(person.sameAs).toContain("https://www.linkedin.com/in/ralph-vargas-sormillon/");
+  expect(person.sameAs).not.toContain("https://www.instagram.com/ralphvargas_/"); // only profiles shown on the site
   const [guap] = await ld("/projects/guap");
-  const app = (guap["@graph"] as Record<string, any>[]).find((n) => n["@type"] === "SoftwareApplication")!;
+  const app = (guap["@graph"] as Record<string, any>[]).find((n) => n["@type"] === "CreativeWork")!;
   expect(app.creator["@id"]).toBe(person["@id"]);
-  expect(app.codeRepository).toBeUndefined(); // private repo: never linked
+  expect(app.isBasedOn).toBeUndefined(); // private repo: never linked
   expect(JSON.stringify(guap)).not.toMatch(/aggregateRating|review|offers/);
 });
 

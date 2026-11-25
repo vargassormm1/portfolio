@@ -4,15 +4,15 @@ import type { NextConfig } from "next";
 // bootstrap scripts ('unsafe-inline' for scripts is needed on statically generated pages without per-request nonces)
 // but nothing from other origins.
 const csp = [
-  "default-src 'self'", "script-src 'self' 'unsafe-inline'", "style-src 'self' 'unsafe-inline'", "img-src 'self' data: blob:",
-  "font-src 'self'", "connect-src 'self'", "worker-src 'self'", "manifest-src 'self'", "frame-src 'none'", "frame-ancestors 'none'", "base-uri 'self'", "form-action 'self'", "object-src 'none'",
+  "default-src 'self'", "script-src 'self' 'unsafe-inline'", "style-src 'self' 'unsafe-inline'", "img-src 'self' data:",
+  "font-src 'self'", "connect-src 'self'", "worker-src 'self'", "manifest-src 'self'", "frame-src 'none'", "frame-ancestors 'none'", "base-uri 'self'", "form-action 'none'", "object-src 'none'",
 ].join("; ");
 const headers = [
   { key: "Content-Security-Policy", value: csp },
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "X-Frame-Options", value: "DENY" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()" },
+  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), payment=(), usb=()" },
   { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
   { key: "Strict-Transport-Security", value: "max-age=63072000" }, // no includeSubDomains/preload: not our domain to decide yet
 ];

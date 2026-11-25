@@ -9,12 +9,13 @@ export const INDEXABLE = process.env.VERCEL_ENV === "production" || process.env.
 export const CONTENT_UPDATED = "2026-11-24";
 /** Open Graph fields shared by every page (a page's own openGraph replaces the root one, so spread this in). */
 export const OG = { siteName: "Ralph Vargas Sormillon", locale: "en_US", images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Ralph Vargas Sormillon, Software Engineer" }] };
-export const abs = (path = "/") => `${SITE_URL}${path === "/" ? "/" : path}`;
+/** Absolute URL; the home page is the bare origin, matching the canonical Next.js renders. */
+export const abs = (path = "/") => (path === "/" ? SITE_URL : `${SITE_URL}${path}`);
 
 /** Crawler policy. Search crawlers are allowed; dedicated model-training crawlers are opted out unless this is true. */
 export const ALLOW_AI_TRAINING = false;
 export const SEARCH_CRAWLERS = ["Googlebot", "Bingbot", "OAI-SearchBot", "ChatGPT-User", "Claude-SearchBot", "Claude-User", "PerplexityBot", "Perplexity-User", "DuckDuckBot", "Applebot"];
-export const TRAINING_CRAWLERS = ["GPTBot", "ClaudeBot", "Google-Extended", "Applebot-Extended", "CCBot"];
+export const TRAINING_CRAWLERS = ["GPTBot", "ClaudeBot", "Google-Extended", "Applebot-Extended", "CCBot", "Meta-ExternalAgent", "Bytespider", "Amazonbot", "cohere-training-data-crawler"];
 
 /** Optional webmaster verification tokens (from Google Search Console / Bing Webmaster Tools). */
 export const VERIFICATION = {

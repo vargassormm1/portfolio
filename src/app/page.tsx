@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "@/components/Icons";
 import { PROFILE, SOCIALS, RESUME_PDF, mailto } from "@/content/profile";
 import { FEATURED, OTHER, ARCHIVE, type Project } from "@/content/projects";
 import { ENGINEERING } from "@/content/engineering";
@@ -12,7 +12,7 @@ import { homeLd } from "@/lib/identity";
 
 export const metadata = { alternates: { canonical: "/" } };
 
-const Ext = () => <ArrowUpRight size={15} aria-hidden="true" className="shrink-0" />;
+const Ext = () => <ArrowUpRight />;
 const NewTab = () => <span className="sr-only"> (opens in a new tab)</span>;
 const SectionHead = ({ id, title, children }: { id: string; title: string; children?: React.ReactNode }) => (
   <div className="max-w-[60ch]"><h2 id={id} className="h-section">{title}</h2>{children ? <p className="mt-2 text-ink-2">{children}</p> : null}</div>
@@ -23,7 +23,7 @@ function Featured({ p, index }: { p: Project; index: number }) {
   const main = p.links.filter((l) => l.kind !== "code");
   const code = p.links.filter((l) => l.kind === "code");
   return (
-    <article aria-labelledby={`p-${p.slug}`} className="reveal group grid gap-8 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:items-center md:gap-12">
+    <article aria-labelledby={`p-${p.slug}`} className="group grid gap-8 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:items-center md:gap-12">
       <div className={flip ? "md:order-2" : ""}><Screens p={p} /></div>
       <div className={flip ? "md:order-1" : ""}>
         <p className="eyebrow">{p.category}</p>
@@ -64,7 +64,6 @@ export default function Home() {
         <div className="mt-8 flex flex-wrap gap-3">
           <a href="#work" className="btn btn-primary">View my work</a>
           <a href="#contact" className="btn btn-secondary">Get in touch</a>
-          <Link href="/resume" className="btn btn-secondary">Resume</Link>
         </div>
       </section>
 
@@ -110,8 +109,8 @@ export default function Home() {
                   <h3 className="h-sub">{j.title}, <span className="text-ink-2">{j.company}</span></h3>
                   {j.summary ? <p className="mt-2 max-w-[64ch] leading-relaxed text-ink-2">{j.summary}</p> : null}
                   {j === current ? (
-                    <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-                      {ENGINEERING.map((e) => <li key={e.title} className="rounded-[var(--radius-md)] bg-surface px-4 py-3.5"><p className="text-sm font-medium">{e.title}</p><p className="mt-1 text-sm leading-relaxed text-ink-2">{e.body}</p></li>)}
+                    <ul className="mt-3 max-w-[64ch] list-disc space-y-1.5 pl-5 leading-relaxed text-ink-2 marker:text-line-strong">
+                      {ENGINEERING.map((e) => <li key={e.title}><span className="text-ink">{e.title}:</span> {e.body}</li>)}
                     </ul>
                   ) : (
                     <ul className="mt-2 max-w-[64ch] list-disc space-y-1 pl-5 leading-relaxed text-ink-2 marker:text-line-strong">{j.highlights.map((h) => <li key={h}>{h}</li>)}</ul>
@@ -125,7 +124,7 @@ export default function Home() {
               <h3 className="h-sub">{EDUCATION.degree} in {EDUCATION.field}, <span className="text-ink-2">{EDUCATION.school}</span></h3>
             </li>
           </ol>
-          <p className="mt-6 text-sm text-ink-3">Client and system details from my professional work stay private. <Link href="/resume" className="link text-ink-2">Full resume</Link></p>
+          <p className="mt-6 text-sm"><Link href="/resume" className="link text-ink-2">Full resume</Link></p>
         </div>
       </section>
 

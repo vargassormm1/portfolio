@@ -10,7 +10,7 @@ export const EXPERIENCE: Job[] = [
   {
     company: "Alliance Advisors", title: "Software Engineer", type: "Full-time", location: "New York City Metropolitan Area, on-site",
     start: "2025-04", end: null,
-    summary: "I develop and maintain enterprise applications, data-processing workflows and production infrastructure, across full-stack development, database engineering, AI-powered internal tools, cloud deployments and application modernization.",
+    summary: "Most days I'm building and maintaining internal and client-facing applications, moving and cleaning up large datasets, and keeping the servers they run on up to date.",
     highlights: [
       "Build features and resolve production issues in enterprise web applications and client-facing systems.",
       "Develop data import, transformation, synchronization and reporting workflows over multi-million-record datasets.",

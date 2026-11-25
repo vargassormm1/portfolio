@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "@/components/Icons";
 import { caseStudies } from "@/content/projects";
 import { PROFILE } from "@/content/profile";
 import { OG } from "@/content/site";
@@ -30,7 +30,7 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
       <JsonLd data={projectLd(p)} />
       <article>
         <header className="wrap pt-10 pb-12 sm:pt-16">
-          <nav aria-label="Back" className="text-sm"><Link href="/#work" className="link inline-flex items-center gap-1.5 text-ink-2"><ArrowLeft size={15} aria-hidden="true" />Things I&apos;ve built</Link></nav>
+          <nav aria-label="Back" className="text-sm"><Link href="/#work" className="link inline-flex items-center gap-1.5 text-ink-2"><ArrowLeft size={15} />Things I&apos;ve built</Link></nav>
           <p className="eyebrow mt-8">Personal project</p>
           <h1 className="h-hero mt-2">{p.name}</h1>
           <p className="mt-3 max-w-[52ch] text-lg text-ink-2">{p.headline}</p>
@@ -41,7 +41,7 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
             <div><dt className="text-ink-3">Started</dt><dd className="num font-medium">{p.started}</dd></div>
           </dl>
           <div className="mt-6 flex flex-wrap gap-3">
-            {p.links.map((l, i) => <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" className={`btn ${i === 0 ? "btn-primary" : "btn-secondary"}`}>{l.label}<ArrowUpRight size={16} aria-hidden="true" /><span className="sr-only"> (opens in a new tab)</span></a>)}
+            {p.links.map((l, i) => <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" className={`btn ${i === 0 ? "btn-primary" : "btn-secondary"}`}>{l.label}<ArrowUpRight size={16} /><span className="sr-only"> (opens in a new tab)</span></a>)}
           </div>
           {p.demoNote ? <p className="mt-3 text-sm text-ink-3">{p.demoNote}</p> : null}
         </header>
@@ -50,7 +50,7 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
 
         <div className="wrap grid gap-12 py-16 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-16 lg:py-24">
           <aside className="hidden lg:block"><nav aria-label="On this page" className="sticky top-24 space-y-2 text-sm text-ink-2">
-            {[["story", "The story"], ["problem", "The problem"], ["goals", "Goals"], ["architecture", "Architecture"], ["challenges", "Engineering challenges"], ["features", "What it does"], ["screens", "Screens"]].map(([id, label]) => <a key={id} href={`#${id}`} className="block hover:text-ink">{label}</a>)}
+            {[["story", "The story"], ["problem", "The problem"], ["goals", "Goals"], ["architecture", "Architecture and technology"], ["challenges", "Engineering challenges"], ["features", "What it does"], ["screens", "Screens"]].map(([id, label]) => <a key={id} href={`#${id}`} className="block hover:text-ink">{label}</a>)}
           </nav></aside>
           <div className="max-w-[68ch] space-y-14">
             <section id="story" aria-labelledby="story-h"><h2 id="story-h" className="h-sub">The story</h2><div className="mt-3 space-y-3 text-lg leading-relaxed text-ink-2">{p.story.map((s) => <p key={s}>{s}</p>)}</div></section>
@@ -73,7 +73,7 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
           </div>
         </div>
       </article>
-      <div className="wrap pb-16"><Link href="/#work" className="link inline-flex items-center gap-1.5 font-medium"><ArrowLeft size={16} aria-hidden="true" />Back to all projects</Link></div>
+      <div className="wrap pb-16"><Link href="/#work" className="link inline-flex items-center gap-1.5 font-medium"><ArrowLeft size={16} />Back to all projects</Link></div>
     </main>
   );
 }

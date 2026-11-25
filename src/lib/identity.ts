@@ -1,6 +1,6 @@
 // Machine-readable views of src/content: JSON-LD, JSON Resume, plain text and llms.txt. One source, many formats.
 import { abs, CONTENT_UPDATED, SITE_URL } from "@/content/site";
-import { INSTAGRAM, PROFILE, RESUME_PDF, SOCIALS } from "@/content/profile";
+import { PROFILE, RESUME_PDF, SOCIALS } from "@/content/profile";
 import { EDUCATION, EXPERIENCE, range, type Job } from "@/content/experience";
 import { ALL_SKILLS, SKILLS } from "@/content/skills";
 import { EXPERTISE } from "@/content/expertise";
@@ -9,7 +9,7 @@ import { ARCHIVE, FEATURED, OTHER, type Project } from "@/content/projects";
 
 export const PERSON_ID = `${SITE_URL}/#person`;
 export const SITE_ID = `${SITE_URL}/#website`;
-const sameAs = [...SOCIALS.map((s) => s.href), INSTAGRAM];
+const sameAs = SOCIALS.map((s) => s.href);
 
 export function personLd() {
   return {
@@ -40,7 +40,7 @@ export function resumeLd() {
   return {
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "ProfilePage", "@id": `${abs("/resume")}#profilepage`, url: abs("/resume"), name: `Resume | ${PROFILE.name}`, isPartOf: { "@id": SITE_ID }, mainEntity: { "@id": PERSON_ID } },
+      { "@type": "WebPage", "@id": `${abs("/resume")}#webpage`, url: abs("/resume"), name: `Resume | ${PROFILE.name}`, isPartOf: { "@id": SITE_ID }, about: { "@id": PERSON_ID } },
       personLd(),
       breadcrumbs([["Home", "/"], ["Resume", "/resume"]]),
     ],
@@ -52,17 +52,16 @@ export function projectLd(p: Project) {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "SoftwareApplication", "@id": `${abs(`/projects/${p.slug}`)}#app`, name: p.name, description: p.summary,
-        applicationCategory: p.slug === "guap" ? "FinanceApplication" : p.slug === "baseline" ? "SportsApplication" : "UtilitiesApplication",
-        operatingSystem: "Web", creator: { "@id": PERSON_ID }, author: { "@id": PERSON_ID },
+        "@type": "CreativeWork", "@id": `${abs(`/projects/${p.slug}`)}#project`, name: p.name, description: p.summary, genre: "Personal software project",
+        creator: { "@id": PERSON_ID }, author: { "@id": PERSON_ID },
         url: p.links.find((l) => l.kind !== "code")?.href ?? abs(`/projects/${p.slug}`),
         ...(p.desktop ? { screenshot: abs(p.desktop.src) } : {}),
-        ...(p.repo === "public" ? { codeRepository: p.links.find((l) => l.kind === "code")?.href } : {}),
+        ...(p.repo === "public" ? { isBasedOn: p.links.find((l) => l.kind === "code")?.href } : {}),
         keywords: p.stack.join(", "),
       },
-      { "@type": "WebPage", "@id": abs(`/projects/${p.slug}`), url: abs(`/projects/${p.slug}`), name: `${p.name} case study | ${PROFILE.name}`, isPartOf: { "@id": SITE_ID }, about: { "@id": `${abs(`/projects/${p.slug}`)}#app` }, author: { "@id": PERSON_ID } },
+      { "@type": "WebPage", "@id": abs(`/projects/${p.slug}`), url: abs(`/projects/${p.slug}`), name: `${p.name} case study | ${PROFILE.name}`, isPartOf: { "@id": SITE_ID }, about: { "@id": `${abs(`/projects/${p.slug}`)}#project` }, author: { "@id": PERSON_ID } },
       { ...personLd() },
-      breadcrumbs([["Home", "/"], ["Work", "/#work"], [p.name, `/projects/${p.slug}`]]),
+      breadcrumbs([["Home", "/"], [p.name, `/projects/${p.slug}`]]),
     ],
   };
 }
