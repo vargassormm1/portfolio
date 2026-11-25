@@ -45,7 +45,7 @@ export default function Resume() {
         <h2 id="r-exp" className="border-b border-line pb-1 text-base font-semibold text-accent-ink print:text-[11pt]">Professional experience</h2>
         {EXPERIENCE.map((j) => (
           <article key={j.company + j.start} className="print-break-avoid mt-5 print:mt-2.5">
-            <div className="flex flex-wrap items-baseline justify-between gap-x-4">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-4 print:justify-start print:gap-x-1.5">
               <h3 className="font-semibold">{j.title}, {j.company}</h3><span aria-hidden="true" className="hidden print:inline"> | </span>
               <p className="num text-sm text-ink-2"><time dateTime={j.start}>{range(j).split(" – ")[0]}</time> – {j.end ? <time dateTime={j.end}>{range(j).split(" – ")[1]}</time> : "Present"}</p>
             </div>
