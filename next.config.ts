@@ -5,7 +5,7 @@ import type { NextConfig } from "next";
 // but nothing from other origins.
 const csp = [
   "default-src 'self'", "script-src 'self' 'unsafe-inline'", "style-src 'self' 'unsafe-inline'", "img-src 'self' data: blob:",
-  "font-src 'self'", "connect-src 'self'", "frame-ancestors 'none'", "base-uri 'self'", "form-action 'self'", "object-src 'none'",
+  "font-src 'self'", "connect-src 'self'", "worker-src 'self'", "manifest-src 'self'", "frame-src 'none'", "frame-ancestors 'none'", "base-uri 'self'", "form-action 'self'", "object-src 'none'",
 ].join("; ");
 const headers = [
   { key: "Content-Security-Policy", value: csp },
@@ -14,7 +14,7 @@ const headers = [
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()" },
   { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
-  { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains" },
+  { key: "Strict-Transport-Security", value: "max-age=63072000" }, // no includeSubDomains/preload: not our domain to decide yet
 ];
 // Previews and local builds: also tell crawlers not to index any file (robots.txt alone hides the noindex meta).
 const indexable = process.env.VERCEL_ENV === "production" || process.env.FORCE_INDEXABLE === "1";
@@ -24,6 +24,12 @@ const config: NextConfig = {
   reactStrictMode: true,
   productionBrowserSourceMaps: false,
   images: { formats: ["image/avif", "image/webp"] },
-  async headers() { return [{ source: "/:path*", headers }]; },
+  async headers() {
+    return [
+      { source: "/:path*", headers },
+      // the service worker must always be revalidated so new deploys take over promptly
+      { source: "/sw.js", headers: [{ key: "Cache-Control", value: "no-cache, no-store, must-revalidate" }, { key: "Service-Worker-Allowed", value: "/" }] },
+    ];
+  },
 };
 export default config;

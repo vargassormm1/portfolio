@@ -5,27 +5,20 @@ export const PROFILE = {
   title: "Software Engineer",
   employer: "Alliance Advisors",
   region: "New York City Metropolitan Area",
-  regionShort: "NYC metro / New Jersey",
+  regionShort: "New Jersey, USA",
   country: "US",
   email: "ralphvargassorm@gmail.com",
   emailSubject: "Software Engineering Opportunity",
   image: "/profile.jpeg",
   greeting: "Hey, I'm Ralph.",
-  tagline: "I turn everyday problems into software. Sometimes I even do it for work.",
-  intro: "I'm a software engineer based in New Jersey, currently at Alliance Advisors. I work across enterprise applications, AI-powered tools, cloud infrastructure and large-scale data, and outside work I build apps that make everyday life a little easier.",
-  aside: "When I'm not coding, I'm probably on a tennis court, at a golf course, or thinking about what to build next.",
+  intro: "I'm a software engineer at Alliance Advisors, where I work on full-stack applications, cloud infrastructure, data processing and AI-powered tools.",
+  aside: "Outside of work, I enjoy playing tennis, golfing and building things that make my life a little easier.",
   summary:
     "Software engineer in the New York City metropolitan area with experience across enterprise applications, full-stack development, cloud infrastructure on AWS, large-scale data migration and AI-powered applications. Currently a Software Engineer at Alliance Advisors.",
   about: [
-    "I'm a software engineer, a Computer Science graduate from Montclair State, and someone with a habit of turning everyday inconveniences into side projects.",
-    "At work I move between full-stack development, AI applications, cloud infrastructure and large-scale data processing. I like understanding how things work, untangling complicated problems, and leaving systems simpler and more reliable than I found them.",
-    "Outside work I'm usually playing tennis, trying to improve my golf game, or building something that started with the thought, \"There has to be a better way to do this.\" Whether it's an application handling millions of records or a leaderboard that gives my friends another reason to talk trash, I just like building things.",
-  ],
-  interests: [
-    { title: "Tennis", body: "Slightly obsessed. It's the reason Baseline exists." },
-    { title: "Golf", body: "Working on my game, and the reason TeeTime Scout exists." },
-    { title: "Side projects", body: "Small tools for my own life and my friends', usually bigger than planned." },
-    { title: "New tech", body: "Especially practical uses of AI, the kind that save real time." },
+    "I'm a software engineer based in New Jersey and a Computer Science graduate from Montclair State University.",
+    "I like working across the whole stack, from user interfaces and APIs to databases, deployments, and figuring out why something isn't working in production.",
+    "Outside of work I spend a lot of time playing tennis, golfing and working on personal projects. Most of what I build are tools I wanted to use myself.",
   ],
 };
 

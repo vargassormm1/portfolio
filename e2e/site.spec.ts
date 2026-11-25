@@ -11,7 +11,7 @@ const broken = (page: Page) => page.locator("img").evaluateAll(async (imgs) => {
   return (imgs as HTMLImageElement[]).filter((i) => i.checkVisibility() && (!i.complete || i.naturalWidth === 0)).map((i) => i.currentSrc || i.src);
 });
 
-for (const path of ["/", "/resume", "/projects/guap", "/projects/baseline", "/nope"]) {
+for (const path of ["/", "/resume", "/projects/guap", "/projects/baseline", "/offline", "/nope"]) {
   test(`${path}: accessible, images load, no console errors`, async ({ page }) => {
     const errors: string[] = [];
     page.on("console", (m) => { if (m.type() === "error" && !/404/.test(m.text())) errors.push(m.text()); });
@@ -113,6 +113,71 @@ test("security headers; every outside link opens safely; the private app isn't l
   const hrefs = await page.locator("a").evaluateAll((as) => as.map((a) => (a as HTMLAnchorElement).href));
   expect(hrefs.filter((x) => x.includes("guap-tau.vercel.app") && !x.endsWith("/demo"))).toEqual([]);
   expect(hrefs.filter((x) => x.includes("github.com/vargassormm1/guap"))).toEqual([]);
-  await expect(page.getByRole("link", { name: /Explore the interactive demo/ }).first()).toHaveAttribute("href", "https://guap-tau.vercel.app/demo");
+  await expect(page.getByRole("link", { name: /Try the demo/ }).first()).toHaveAttribute("href", "https://guap-tau.vercel.app/demo");
   expect((await request.get("/ralph-vargas-sormillon-resume.pdf")).headers()["content-type"]).toContain("application/pdf");
+});
+
+test("navigation feels immediate and keeps history: home, case study, back, resume, anchors", async ({ page }) => {
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+  await page.goto("/");
+  await page.waitForLoadState("networkidle"); // let in-viewport links prefetch, as a real visit would
+  const t0 = Date.now();
+  await page.getByRole("link", { name: "How I built it" }).first().click();
+  await expect(page).toHaveURL(/\/projects\/guap$/);
+  await expect(page.getByRole("heading", { level: 1, name: "Guap" })).toBeVisible();
+  expect(Date.now() - t0, "client-side navigation to a case study").toBeLessThan(1500);
+  await page.goBack();
+  await expect(page).toHaveURL(/\/$/);
+  await page.goForward();
+  await expect(page).toHaveURL(/\/projects\/guap$/);
+  await page.goto("/");
+  const menu = page.getByRole("button", { name: "Open menu" });
+  if (await menu.isVisible()) { await menu.click(); await page.locator("#mobile-nav").getByRole("link", { name: "Resume" }).click(); }
+  else await page.locator("header nav").first().getByRole("link", { name: "Resume" }).click();
+  await expect(page).toHaveURL(/\/resume$/);
+  await expect(page.getByRole("heading", { level: 1, name: "Ralph Vargas Sormillon" })).toBeVisible();
+  await page.goto("/#experience");
+  await expect(page.getByRole("heading", { level: 2, name: "Experience" })).toBeInViewport();
+  expect(errors).toEqual([]);
+});
+
+test("installable: manifest, icons and service worker are served correctly", async ({ request }) => {
+  const m = await request.get("/manifest.webmanifest");
+  expect(m.ok()).toBe(true);
+  const man = await m.json();
+  expect(man).toMatchObject({ display: "standalone", start_url: "/", scope: "/", theme_color: "#202225", background_color: "#202225" });
+  expect(man.icons.some((i: { purpose: string }) => i.purpose === "maskable")).toBe(true);
+  for (const i of man.icons) expect((await request.get(i.src)).headers()["content-type"]).toContain("image/png");
+  const sw = await request.get("/sw.js");
+  expect(sw.headers()["cache-control"]).toContain("no-cache");
+  expect(await sw.text()).toContain("network first");
+});
+
+test("offline: a visited page still opens, an unvisited page shows the offline screen", async ({ page, context, browserName }) => {
+  test.skip(browserName !== "chromium", "service worker offline emulation is reliable in Chromium");
+  await page.goto("/");
+  await page.evaluate(async () => { await navigator.serviceWorker.ready; });
+  await page.reload(); // now controlled
+  await expect.poll(() => page.evaluate(() => !!navigator.serviceWorker.controller)).toBe(true);
+  await page.goto("/resume");
+  await context.setOffline(true);
+  await page.goto("/resume");
+  await expect(page.getByRole("heading", { level: 1, name: "Ralph Vargas Sormillon" })).toBeVisible();
+  await page.goto("/projects/does-not-exist-offline");
+  await expect(page.getByRole("heading", { level: 1, name: "You're offline" })).toBeVisible();
+  await context.setOffline(false);
+});
+
+test("small attack surface: no sensitive files, no write methods, nothing private in public output", async ({ request }) => {
+  for (const p of ["/.env", "/.env.local", "/.git/config", "/.git/HEAD", "/package.json", "/next.config.ts", "/.vercel/project.json", "/api", "/admin", "/wp-login.php", "/_next/static/../../.env"]) {
+    expect((await request.get(p)).status(), p).toBe(404);
+  }
+  for (const method of ["POST", "PUT", "DELETE"]) {
+    expect((await request.fetch("/", { method })).status(), method).toBeGreaterThanOrEqual(400);
+  }
+  for (const p of ["/", "/resume", "/resume.json", "/resume.txt", "/llms.txt", "/sitemap.xml"]) {
+    const body = await (await request.get(p)).text();
+    expect(body, p).not.toMatch(/TeeTime|tee time|VERCEL_OIDC|supabase\.co|sk-[A-Za-z0-9]{20}/i);
+  }
 });

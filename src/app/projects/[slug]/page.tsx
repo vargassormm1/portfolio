@@ -31,9 +31,9 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
       <article>
         <header className="wrap pt-10 pb-12 sm:pt-16">
           <nav aria-label="Back" className="text-sm"><Link href="/#work" className="link inline-flex items-center gap-1.5 text-ink-2"><ArrowLeft size={15} aria-hidden="true" />Things I&apos;ve built</Link></nav>
-          <p className="kicker mt-8">Case study: {p.category.toLowerCase()}</p>
-          <h1 className="h-display mt-3 max-w-[18ch]">{p.name}</h1>
-          <p className="mt-3 max-w-[40ch] text-xl font-medium text-ink-2">{p.headline}</p>
+          <p className="eyebrow mt-8">Personal project</p>
+          <h1 className="h-hero mt-2">{p.name}</h1>
+          <p className="mt-3 max-w-[52ch] text-lg text-ink-2">{p.headline}</p>
           <dl className="mt-8 grid max-w-[760px] grid-cols-2 gap-x-8 gap-y-4 border-y border-line py-5 text-sm sm:grid-cols-4">
             <div><dt className="text-ink-3">Status</dt><dd className="font-medium">{p.status}</dd></div>
             <div><dt className="text-ink-3">Role</dt><dd className="font-medium">Design and development</dd></div>
@@ -58,7 +58,7 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
             <section id="goals" aria-labelledby="goals-h"><h2 id="goals-h" className="h-sub">Goals</h2><ul className="mt-3 list-disc space-y-1.5 pl-5 leading-relaxed text-ink-2">{cs.goals.map((g) => <li key={g}>{g}</li>)}</ul></section>
             <section id="architecture" aria-labelledby="arch-h"><h2 id="arch-h" className="h-sub">Architecture and technology</h2>
               <ul className="mt-3 list-disc space-y-2 pl-5 leading-relaxed text-ink-2">{cs.architecture.map((a) => <li key={a}>{a}</li>)}</ul>
-              <ul className="mt-5 flex flex-wrap gap-1.5" aria-label="Technologies">{p.stack.map((t) => <li key={t} className="tag">{t}</li>)}</ul>
+              <p className="mt-5 text-sm text-ink-3">Built with {p.stack.join(", ")}</p>
             </section>
             <section id="challenges" aria-labelledby="ch-h"><h2 id="ch-h" className="h-sub">Engineering challenges</h2>
               <div className="mt-4 divide-y divide-line border-y border-line">{p.challenges.map((c) => <div key={c.title} className="py-5"><h3 className="font-semibold">{c.title}</h3><p className="mt-1.5 leading-relaxed text-ink-2">{c.body}</p></div>)}</div>
@@ -66,8 +66,8 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
             <section id="features" aria-labelledby="f-h"><h2 id="f-h" className="h-sub">What it does</h2><ul className="mt-3 list-disc space-y-1.5 pl-5 leading-relaxed text-ink-2">{p.features.map((f) => <li key={f}>{f}</li>)}</ul></section>
             {p.phones?.length ? (
               <section id="screens" aria-labelledby="s-h"><h2 id="s-h" className="h-sub">Screens</h2>
-                <p className="mt-2 text-sm text-ink-3">{p.slug === "guap" ? "From the public demo. Every name and number is made up." : "From the test environment, with fictional players."}</p>
-                <div className="mt-5 grid grid-cols-2 gap-4 sm:gap-6">{p.phones.map((s) => <div key={s.src} className="overflow-hidden rounded-[22px] border-[5px] border-ink bg-ink"><Image src={s.src} alt={s.alt} width={s.w} height={s.h} sizes="(min-width: 768px) 320px, 45vw" className="block h-auto w-full" /></div>)}</div>
+                <p className="mt-2 text-sm text-ink-3">{p.slug === "guap" ? "From the public demo. Everything in it is made up." : "From the test environment, with fictional players."}</p>
+                <div className="mt-5 grid grid-cols-2 gap-4 sm:gap-6">{p.phones.map((s) => <div key={s.src} className="overflow-hidden rounded-[18px] ring-1 ring-line-strong"><Image src={s.src} alt={s.alt} width={s.w} height={s.h} sizes="(min-width: 768px) 320px, 45vw" className="block h-auto w-full" /></div>)}</div>
               </section>
             ) : null}
           </div>

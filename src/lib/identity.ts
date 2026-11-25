@@ -5,7 +5,7 @@ import { EDUCATION, EXPERIENCE, range, type Job } from "@/content/experience";
 import { ALL_SKILLS, SKILLS } from "@/content/skills";
 import { EXPERTISE } from "@/content/expertise";
 import { ENGINEERING } from "@/content/engineering";
-import { ARCHIVE, FEATURED, type Project } from "@/content/projects";
+import { ARCHIVE, FEATURED, OTHER, type Project } from "@/content/projects";
 
 export const PERSON_ID = `${SITE_URL}/#person`;
 export const SITE_ID = `${SITE_URL}/#website`;
@@ -90,7 +90,7 @@ export function jsonResume() {
     skills: SKILLS.map((s) => ({ name: s.group, keywords: s.items })),
     projects: [
       ...FEATURED.map((p) => ({ name: p.name, description: p.summary, highlights: p.challenges.map((c) => c.title), keywords: p.stack, url: p.links[0]?.href ?? abs(`/projects/${p.slug}`), ...(p.caseStudy ? { entity: abs(`/projects/${p.slug}`) } : {}) })),
-      ...ARCHIVE.filter((a) => a.href).map((a) => ({ name: a.name, description: a.body, url: a.href! })),
+      ...[...OTHER, ...ARCHIVE].map((a) => ({ name: a.name, description: a.body, url: a.href })),
     ],
     meta: { canonical: abs("/resume.json"), lastModified: CONTENT_UPDATED },
   };

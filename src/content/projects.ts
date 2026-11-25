@@ -6,7 +6,8 @@ export type Project = {
   slug: string; name: string; category: string; status: "Live" | "In development" | "Archived";
   summary: string;
   /** the human story, in Ralph's voice (Baseline and Guap from Ralph; DocChat's motivation flagged for review) */
-  headline: string; story: string[]; caption?: string;
+  /** one plain line used in titles and metadata */
+  headline: string; story: string[]; highlights: string[];
   features: string[]; challenges: { title: string; body: string }[];
   stack: string[];
   links: { label: string; href: string; kind: "demo" | "site" | "code" }[];
@@ -22,14 +23,13 @@ const desk = (src: string, alt: string): Shot => ({ src, alt, w: 2160, h: 1350 }
 
 export const FEATURED: Project[] = [
   {
-    slug: "guap", name: "Guap", category: "Personal project, finance", status: "Live", started: "Nov 2026",
+    slug: "guap", name: "Guap", category: "Personal project", status: "Live", started: "Nov 2026",
     summary: "A personal cash-flow app that brings account balances, transactions, upcoming bills and a spending forecast into one mobile-first view.",
-    headline: "I got tired of budgeting in spreadsheets. So I built my own finance app.",
-    caption: "Built for an audience of one: me.",
+    headline: "A personal cash-flow app I built for myself.",
+    highlights: ["Account sync", "Cash-flow planning", "PWA"],
     story: [
-      "I've always been particular about keeping track of my finances. Between spreadsheets, several credit cards, bank accounts and upcoming bills, staying on top of it all started to feel like a part-time job.",
-      "So, naturally, I did what any software engineer would do and built an entire application to solve my own problem.",
-      "Guap syncs my accounts, tracks spending, keeps track of the bills that are still coming, and tells me how much I can comfortably spend before payday. It's built for an audience of one, but there's an interactive demo with fictional data so you can explore it too.",
+      "I used to manage my finances through spreadsheets, but I wanted something that could automatically keep track of my accounts, spending and upcoming bills. I ended up building my own app.",
+      "Guap brings everything together and helps me understand how much I can comfortably spend without losing track of upcoming payments. I built it for myself, but there's also a demo with fictional data for anyone who wants to check it out.",
     ],
     features: [
       "Bank, card and investment sync through SimpleFIN, with a manual fallback for unsupported accounts",
@@ -49,8 +49,8 @@ export const FEATURED: Project[] = [
       { title: "A demo that can't leak", body: "The demo reuses the real screens and calculations over a fictional person, with state kept in the visitor's own cookie and no database access at all." },
     ],
     stack: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "SimpleFIN", "Tailwind CSS", "PWA", "Vitest", "Vercel"],
-    links: [{ label: "Explore the interactive demo", href: "https://guap-tau.vercel.app/demo", kind: "demo" }],
-    demoNote: "No account needed. Every name and number in the demo is made up.",
+    links: [{ label: "Try the demo", href: "https://guap-tau.vercel.app/demo", kind: "demo" }],
+    demoNote: "No account needed. Everything in the demo is made up.",
     repo: "private",
     desktop: desk("/projects/guap-desktop-home.png", "Guap demo on desktop: $675.64 left to spend in November, with pay, bills and spending broken down."),
     phones: [
@@ -70,14 +70,13 @@ export const FEATURED: Project[] = [
     },
   },
   {
-    slug: "baseline", name: "Baseline", category: "Personal project, sports", status: "Live", started: "Mar 2024",
+    slug: "baseline", name: "Baseline", category: "Personal project", status: "Live", started: "Mar 2024",
     summary: "A tennis and pickleball platform where friends record matches, confirm results, follow rankings and keep head-to-head records.",
-    headline: "Turning friendly matches into serious competition.",
-    caption: "Because bragging rights deserve a database.",
+    headline: "Match tracking and rankings for my friends' tennis and pickleball games.",
+    highlights: ["Match tracking", "Rankings", "Player challenges"],
     story: [
-      "I'm slightly obsessed with tennis. My friends and I used to track our one-on-one matches in the Notes app. Naturally, things got competitive, and a list of scores wasn't cutting it anymore.",
-      "So we made Baseline: our own little tennis tour, with rankings, match history, challenges and a leaderboard for bragging rights.",
-      "What started as a better way to settle arguments about who's best has grown into a full competition platform, now with doubles and pickleball too.",
+      "My friends and I play a lot of tennis, and we used to keep track of our matches in the Notes app. We wanted our own rankings and a better way to keep track of who's beating who, so we created Baseline.",
+      "It's a place for us to record matches, challenge each other, track our progress and see where everyone stands. It now covers doubles and pickleball too.",
     ],
     features: [
       "Tennis singles and doubles, and pickleball singles and doubles, each with its own rankings",
@@ -95,7 +94,7 @@ export const FEATURED: Project[] = [
       { title: "Locked-down writes", body: "All writes go through database functions with row-level security, column-level grants and rate limits, with unit, database and end-to-end tests on phone and desktop." },
     ],
     stack: ["Next.js", "TypeScript", "React", "Supabase", "PostgreSQL", "Tailwind CSS", "Playwright", "Vitest", "Vercel"],
-    links: [{ label: "Visit Baseline", href: "https://base-line.vercel.app", kind: "site" }, { label: "Source code", href: "https://github.com/vargassormm1/BaseLine", kind: "code" }],
+    links: [{ label: "View project", href: "https://base-line.vercel.app", kind: "site" }, { label: "Source code", href: "https://github.com/vargassormm1/BaseLine", kind: "code" }],
     repo: "public",
     desktop: desk("/projects/baseline-desktop-home.png", "Baseline on desktop: a player's rank, record and points, with a result waiting for confirmation."),
     phones: [
@@ -115,12 +114,12 @@ export const FEATURED: Project[] = [
     },
   },
   {
-    slug: "docchat", name: "DocChat", category: "Personal project, AI", status: "Archived", started: "2024",
+    slug: "docchat", name: "DocChat", category: "Personal project", status: "Archived", started: "2024",
     summary: "Upload a PDF and ask questions about it. Answers come from the most relevant passages of the document.",
-    headline: "Less scrolling, more answers.",
+    headline: "Ask questions about a PDF and get answers from its own text.",
+    highlights: ["Retrieval", "OpenAI", "AWS S3"],
     story: [
-      "Some documents are longer than they need to be, and sometimes you just want one answer without reading forty pages.",
-      "I built DocChat to explore how AI could make a document feel like something you can talk to: upload a PDF, ask a question, get an answer drawn from the document itself.",
+      "An AI application I built to make it easier to work with PDF documents. Instead of searching through pages by hand, you upload a document and ask questions about it.",
     ],
     features: ["PDF upload to Amazon S3", "Question answering grounded in the document's own text", "A chat interface per document"],
     challenges: [
@@ -134,12 +133,15 @@ export const FEATURED: Project[] = [
   },
 ];
 
+export const OTHER = [
+  { name: "TubeTalks", body: "An experiment in using AI to make video content easier to explore through conversation: paste a YouTube link and ask questions about it.", stack: "Next.js, LangChain, OpenAI", href: "https://github.com/vargassormm1/TubeTalks", linkLabel: "Source code" },
+];
+
+/** Early projects, kept for the record. */
 export const ARCHIVE = [
-  { name: "TeeTime Scout", status: "In development", body: "Finding a good weekend tee time at a public course in New Jersey is a competitive sport of its own. Instead of refreshing booking sites, I'm prototyping a tool that would tell me when an opening fits my group. Early days, and not public. I'd rather spend Saturday playing golf than looking for somewhere to play.", stack: "Next.js, Supabase", href: null as string | null, linkLabel: null as string | null },
-  { name: "TubeTalks", status: "Archived", body: "A follow-up experiment to DocChat: paste a YouTube link and ask questions about the video.", stack: "Next.js, LangChain, OpenAI", href: "https://github.com/vargassormm1/TubeTalks", linkLabel: "Source code" },
-  { name: "Matej Sefcik Photography", status: "Live", body: "A portfolio site for a film and photography client, with a custom gallery, lightbox and contact form.", stack: "HTML, CSS, JavaScript", href: "https://www.matejsefcik.com/", linkLabel: "Visit site" },
-  { name: "Maze Game", status: "Archived", body: "One of my first projects: a browser maze with a physics engine and a new layout every game.", stack: "JavaScript, Matter.js", href: "https://vigorous-wilson-7e4725.netlify.app/", linkLabel: "Play" },
-  { name: "Simon Game", status: "Archived", body: "Where a lot of developers start, me included: the classic memory game with colors and sounds.", stack: "HTML, CSS, jQuery", href: "https://friendly-bassi-500e78.netlify.app/", linkLabel: "Play" },
+  { name: "Matej Sefcik Photography", body: "A portfolio site for a film and photography client, with a custom gallery and contact form.", stack: "HTML, CSS, JavaScript", href: "https://www.matejsefcik.com/", linkLabel: "Visit site" },
+  { name: "Maze Game", body: "A browser maze with a physics engine and a new layout every game.", stack: "JavaScript, Matter.js", href: "https://vigorous-wilson-7e4725.netlify.app/", linkLabel: "Play" },
+  { name: "Simon Game", body: "The classic memory game with colors and sounds.", stack: "HTML, CSS, jQuery", href: "https://friendly-bassi-500e78.netlify.app/", linkLabel: "Play" },
 ];
 
 export const caseStudies = FEATURED.filter((p) => p.caseStudy);
